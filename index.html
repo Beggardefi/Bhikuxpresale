@@ -4,206 +4,148 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buy BHIKX</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/bhikx-logo.png" type="image/png">
+    
+    <!-- Web3 and Ethers Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.7.3/web3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
+
     <style>
         body {
-            font-family: 'Inter', sans-serif;
+            background: #000; /* Black background */
+            color: #fff;      
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #1e1e2f, #3b5998);
-            color: white;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
             text-align: center;
         }
-
-        header, footer {
-            padding: 20px;
-            background: #222;
+        h1, h2, p {
+            color: #D4AF37; /* Golden text */
         }
-
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-        }
-
-        #countdown {
-            font-size: 1.5rem;
-            margin: 20px;
-            padding: 15px;
-            background: #333;
-            border-radius: 8px;
-            display: inline-block;
-        }
-
-        .info {
-            margin: 20px 0;
-        }
-
-        .card {
-            background: #2a2a40;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .buttons, .input-group {
-            display: flex;
-            justify-content: space-between;
-            margin: 15px 0;
-        }
-
         button {
-            background: #4CAF50;
-            color: white;
+            background: #D4AF37; /* Golden buttons */
+            color: #000;         
             border: none;
-            padding: 12px 25px;
-            font-size: 1rem;
+            padding: 12px 24px;
+            margin: 10px;
             cursor: pointer;
             transition: 0.3s;
         }
-
         button:hover {
-            background: #45a049;
+            background: #FF0000; /* Red hover effect */
+            color: #fff;
         }
-
-        input {
-            width: 45%;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
+        .raised {
+            font-size: 22px;
+            font-weight: bold;
         }
-
-        .presale-bar {
-            width: 100%;
-            height: 30px;
-            background: #ccc;
-            border-radius: 15px;
-            overflow: hidden;
+        .input-group {
             margin: 20px 0;
         }
-
+        input {
+            padding: 10px;
+            border: 1px solid #D4AF37;
+            color: #000;
+            width: calc(100% - 22px);
+        }
+        .output {
+            color: #FF0000;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .progress-bar {
+            width: 80%;
+            margin: 20px auto;
+            background: #444;
+            border-radius: 5px;
+            overflow: hidden;
+        }
         .progress {
-            width: 25%;
-            height: 100%;
-            background: #4CAF50;
-            color: white;
-            text-align: center;
+            height: 30px;
+            background: #D4AF37;
+            width: 25%; /* 25% sold */
             line-height: 30px;
+            text-align: center;
+            color: #000;
+            font-weight: bold;
         }
-
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+        }
         a {
-            color: #00bfff;
+            color: #FF0000;
             text-decoration: none;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-            input {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-            .buttons {
-                flex-direction: column;
-            }
-            button {
-                margin-bottom: 10px;
-            }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Buy BHIKX Tokens</h1>
-</header>
+<div class="container">
+    <h1>Buy BHIKX Token</h1>
+    
+    <img src="images/bhikx-logo.png" alt="BHIKX Logo">
 
-<div id="countdown"></div>
-
-<div class="card">
-    <div class="info">
-        <p>USDT RAISED: <strong>$46,723.26 / $601,717</strong></p>
-        <p>YOUR PURCHASED BHIKX: <strong>0</strong></p>
-        <p>YOUR STAKEABLE BHIKX: <strong>0</strong></p>
-        <p>1 BHIKX = <strong>$0.001</strong></p>
+    <div class="progress-bar">
+        <div class="progress">25% Sold</div>
     </div>
 
-    <div class="presale-bar">
-        <div class="progress" style="width: 25%;">25% Sold</div>
-    </div>
-
-    <div class="buttons">
-        <button onclick="connectWallet()">Connect Wallet</button>
-        <button onclick="buyWithBNB()">Buy with BNB</button>
-        <button onclick="buyWithUSDT()">Buy with USDT</button>
-    </div>
+    <p class="raised">USDT RAISED: <strong>$25,000</strong> / $601,717</p>
 
     <div class="input-group">
-        <input type="number" id="ethInput" placeholder="Enter ETH" oninput="calculateBHIKX()">
-        <input type="text" id="bhikxOutput" placeholder="Receive BHIKX" readonly>
+        <input type="number" id="usdtAmount" placeholder="Enter USDT" oninput="calculateBHIKX()">
+        <p id="bhikxOutput" class="output">Receive BHIKX: 0</p>
     </div>
 
-    <p><a href="https://metamask.io/download.html" target="_blank">Don't have a wallet?</a></p>
+    <button onclick="connectBNB()">Buy with BNB</button>
+    <button onclick="connectUSDT()">Buy with USDT</button>
+
+    <p><a href="#">Don't have a wallet?</a></p>
+
+    <footer>
+        <p>Powered by Web3Payments</p>
+    </footer>
 </div>
 
-<footer>
-    <p>Powered by Web3Payments</p>
-</footer>
-
+<!-- Scripts -->
 <script>
-    // Countdown Timer
-    const countdown = document.getElementById('countdown');
-    const targetDate = new Date('2025-12-31T00:00:00').getTime();
+    const usdtRate = 0.001;  // 1 BHIKX = 0.001 USDT
 
-    function updateTimer() {
-        const now = new Date().getTime();
-        const diff = targetDate - now;
-
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-        countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    // Function to calculate BHIKX dynamically
+    function calculateBHIKX() {
+        const usdt = parseFloat(document.getElementById('usdtAmount').value) || 0;
+        const bhikx = usdt / usdtRate;
+        document.getElementById('bhikxOutput').innerText = `Receive BHIKX: ${bhikx.toFixed(2)}`;
     }
 
-    setInterval(updateTimer, 1000);
-
-    // Wallet connection
-    async function connectWallet() {
+    // BNB Connection
+    async function connectBNB() {
         if (window.ethereum) {
-            try {
-                await window.ethereum.request({ method: 'eth_requestAccounts' });
-                alert('Wallet Connected!');
-            } catch (error) {
-                console.error(error);
-            }
+            const web3 = new Web3(window.ethereum);
+            await window.ethereum.request({ method: "eth_requestAccounts" });
+            const accounts = await web3.eth.getAccounts();
+            alert("Connected with BNB: " + accounts[0]);
         } else {
-            alert('Please install MetaMask!');
+            alert("MetaMask not detected. Please install it.");
         }
     }
 
-    function buyWithBNB() {
-        alert("BNB payment function will be integrated.");
-    }
-
-    function buyWithUSDT() {
-        alert("USDT payment function will be integrated.");
-    }
-
-    // ETH to BHIKX calculation
-    function calculateBHIKX() {
-        const ethAmount = parseFloat(document.getElementById('ethInput').value);
-        const bhikxPrice = 0.001;  // 1 BHIKX = $0.001
-        const bhikxAmount = ethAmount / bhikxPrice;
-        
-        if (!isNaN(bhikxAmount)) {
-            document.getElementById('bhikxOutput').value = bhikxAmount.toFixed(2);
+    // USDT Connection
+    async function connectUSDT() {
+        if (window.ethereum) {
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            await provider.send("eth_requestAccounts", []);
+            const signer = provider.getSigner();
+            const address = await signer.getAddress();
+            alert("Connected with USDT: " + address);
         } else {
-            document.getElementById('bhikxOutput').value = '';
+            alert("MetaMask not detected. Please install it.");
         }
     }
 </script>
