@@ -8,15 +8,15 @@
 body {
     font-family: Arial, sans-serif;
     color: #fff;
-    background: linear-gradient(135deg, #111, #b71c1c, #ffb300);
-    background-size: 300% 300%;
-    animation: bg-animation 10s infinite;
+    background: url('images/background.jpg') no-repeat center center/cover;
+    background-size: cover;
+    height: 100vh;
 }
 
 /* Navigation */
 nav {
     background: #111;
-    padding: 10px;
+    padding: 15px;
     text-align: center;
 }
 
@@ -32,6 +32,7 @@ nav ul li {
 nav a {
     color: #ffb300;
     text-decoration: none;
+    font-weight: bold;
 }
 
 nav a:hover {
@@ -41,8 +42,7 @@ nav a:hover {
 /* Hero Section */
 #hero {
     text-align: center;
-    padding: 80px 20px;
-    background: url('images/hero-bg.jpg') no-repeat center center/cover;
+    padding: 100px 20px;
 }
 
 .hero-content h1 {
@@ -57,7 +57,7 @@ nav a:hover {
 
 .btn {
     display: inline-block;
-    padding: 10px 30px;
+    padding: 12px 30px;
     background: #b71c1c;
     color: #fff;
     text-decoration: none;
@@ -72,6 +72,7 @@ nav a:hover {
 #about, #presale, #contact {
     padding: 60px 20px;
     text-align: center;
+    background: rgba(0, 0, 0, 0.8);
 }
 
 #about img {
@@ -86,12 +87,14 @@ nav a:hover {
     background: #222;
     padding: 30px;
     border-radius: 10px;
+    box-shadow: 0 0 15px #ffb300;
 }
 
 .presale-container input, .buttons button {
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
+    padding: 12px;
+    margin: 15px 0;
+    font-size: 16px;
 }
 
 .presale-container button {
@@ -106,12 +109,19 @@ nav a:hover {
     background: #ffb300;
 }
 
+/* Countdown Timer */
+#countdown {
+    font-size: 24px;
+    color: #ffb300;
+    margin-bottom: 20px;
+}
+
 /* Contact Section */
 #contact p {
     font-size: 18px;
 }
 
-/* Animations */
+/* Animation */
 @keyframes bg-animation {
     0% {
         background-position: 0% 50%;
