@@ -4,83 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BHIKX Token Presale</title>
+    <title>BHIKX Presale</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.7.4/web3.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@walletconnect/web3-provider"></script>
 </head>
 <body>
-
-<header class="header">
-    <div class="container">
-        <h1>BHIKX Token Presale</h1>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#buy">Buy BHIKX</a>
-            <a href="#faq">FAQ</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </div>
-</header>
-
-<section class="hero">
-    <div class="container">
-        <h2>Buy BHIKX Tokens with USDT or BNB</h2>
-        <p>Join the future of crypto investments with guaranteed USDT staking rewards.</p>
-        <div class="countdown" id="countdown">
-            <span id="days">00</span> days
-            <span id="hours">00</span> hours
-            <span id="minutes">00</span> minutes
-            <span id="seconds">00</span> seconds
+    <header class="header">
+        <div class="container">
+            <h1>BHIKX Token Presale</h1>
+            <p>Join the revolution! Buy BHIKX with BNB or USDT.</p>
         </div>
-    </div>
-</section>
+    </header>
 
-<section class="presale-info" id="buy">
-    <div class="container">
-        <h2>Presale Status</h2>
-        <p>USDT Raised: <strong>$25,000</strong> / $601,717</p>
-        <p>1 BHIKX = $0.001</p>
-        
-        <div class="progress-bar">
-            <div class="progress" style="width: 25%;"></div>
-        </div>
-        <p>25% Sold</p>
-
-        <div class="buy-form">
-            <label>Pay with:</label>
-            <button onclick="selectCurrency('BNB')">BNB</button>
-            <button onclick="selectCurrency('USDT')">USDT</button>
-            
-            <div>
-                <input type="number" id="amount" placeholder="Enter amount" oninput="calculateTokens()">
-                <p>Receive: <span id="receiveTokens">0</span> BHIKX</p>
+    <section class="presale">
+        <div class="container">
+            <div class="countdown">
+                <h2>Presale Ends In:</h2>
+                <div id="timer">00:00:00</div>
             </div>
-            
-            <button onclick="connectWallet()">Connect Wallet</button>
-            <button onclick="buyTokens()">Buy Tokens</button>
+
+            <div class="purchase">
+                <h3>USDT Raised: $25,000 / $601,717</h3>
+                <label for="pay">Pay with:</label>
+                <div class="buttons">
+                    <button onclick="selectCurrency('bnb')">BNB</button>
+                    <button onclick="selectCurrency('usdt')">USDT</button>
+                </div>
+                <input type="number" id="pay" placeholder="Enter Amount" />
+                <button onclick="buyToken()">Buy BHIKX</button>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="faq" id="faq">
-    <div class="container">
-        <h2>FAQ</h2>
-        <p>Have questions? Reach out or check our social media links.</p>
-    </div>
-</section>
+    <footer class="footer">
+        <p>Powered by BHIKX | Secure & Reliable</p>
+    </footer>
 
-<footer class="footer" id="contact">
-    <div class="container">
-        <p>Contact us: support@bhikx.com</p>
-        <p>Follow us on social media:</p>
-        <a href="#">Twitter</a> |
-        <a href="#">Telegram</a> |
-        <a href="#">Facebook</a>
-    </div>
-</footer>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
-    </html>
-    
+</html>
