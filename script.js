@@ -22,11 +22,11 @@ function countdown() {
 setInterval(countdown, 1000);
 
 // Automatic BHIKX Calculation
-document.getElementById('usdtInput').addEventListener('input', () => {
+function calculateBHIKX() {
     const usdt = parseFloat(document.getElementById('usdtInput').value) || 0;
     const bhikx = usdt / 0.001;  
     document.getElementById('bhikxOutput').value = bhikx.toFixed(0);
-});
+}
 
 // Wallet Connect Simulation
 function connectWallet() {
