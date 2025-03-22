@@ -13,3 +13,44 @@
     <button id="connect-wallet">Connect Wallet</button>
 </body>
 </html>
+
+<script>
+const countdown = document.getElementById('countdown');
+const targetDate = new Date('2025-12-31T00:00:00').getTime();
+
+function updateTimer() {
+    const now = new Date().getTime();
+    const diff = targetDate - now;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+}
+
+setInterval(updateTimer, 1000);
+</script>
+
+<div id="presale-bar" style="width: 100%; background: #ddd;">
+    <div id="progress" style="width: 50%; background: green; color: white; text-align: center;">50% Sold</div>
+</div>
+
+<script>
+const connectWallet = document.getElementById('connect-wallet');
+
+connectWallet.onclick = async () => {
+    if (window.ethereum) {
+        try {
+            await window.ethereum.request({ method: 'eth_requestAccounts' });
+            alert('Wallet Connected!');
+        } catch (error) {
+            console.error(error);
+        }
+    } else {
+        alert('Please install MetaMask!');
+    }
+};
+</script>
+
