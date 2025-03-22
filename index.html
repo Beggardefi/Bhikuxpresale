@@ -85,7 +85,7 @@
         }
 
         .progress {
-            width: 50%;
+            width: 25%;
             height: 100%;
             background: #4CAF50;
             color: white;
@@ -128,25 +128,25 @@
         <p>USDT RAISED: <strong>$46,723.26 / $601,717</strong></p>
         <p>YOUR PURCHASED BHIKX: <strong>0</strong></p>
         <p>YOUR STAKEABLE BHIKX: <strong>0</strong></p>
-        <p>1 BHIKX = <strong>$0.00222</strong></p>
+        <p>1 BHIKX = <strong>$0.001</strong></p>
     </div>
 
     <div class="presale-bar">
-        <div class="progress" style="width: 60%;">60% Sold</div>
+        <div class="progress" style="width: 25%;">25% Sold</div>
     </div>
 
     <div class="buttons">
-        <button id="connect-wallet">Connect Wallet</button>
-        <button>Buy with BNB</button>
-        <button>Buy with USDT</button>
+        <button onclick="connectWallet()">Connect Wallet</button>
+        <button onclick="buyWithBNB()">Buy with BNB</button>
+        <button onclick="buyWithUSDT()">Buy with USDT</button>
     </div>
 
     <div class="input-group">
-        <input type="text" placeholder="Pay with ETH">
-        <input type="text" placeholder="Receive BHIKX">
+        <input type="number" id="ethInput" placeholder="Enter ETH" oninput="calculateBHIKX()">
+        <input type="text" id="bhikxOutput" placeholder="Receive BHIKX" readonly>
     </div>
 
-    <p><a href="#">Don't have a wallet?</a></p>
+    <p><a href="https://metamask.io/download.html" target="_blank">Don't have a wallet?</a></p>
 </div>
 
 <footer>
@@ -172,10 +172,8 @@
 
     setInterval(updateTimer, 1000);
 
-    // Wallet Connection
-    const connectWallet = document.getElementById('connect-wallet');
-
-    connectWallet.onclick = async () => {
+    // Wallet connection
+    async function connectWallet() {
         if (window.ethereum) {
             try {
                 await window.ethereum.request({ method: 'eth_requestAccounts' });
@@ -186,7 +184,28 @@
         } else {
             alert('Please install MetaMask!');
         }
-    };
+    }
+
+    function buyWithBNB() {
+        alert("BNB payment function will be integrated.");
+    }
+
+    function buyWithUSDT() {
+        alert("USDT payment function will be integrated.");
+    }
+
+    // ETH to BHIKX calculation
+    function calculateBHIKX() {
+        const ethAmount = parseFloat(document.getElementById('ethInput').value);
+        const bhikxPrice = 0.001;  // 1 BHIKX = $0.001
+        const bhikxAmount = ethAmount / bhikxPrice;
+        
+        if (!isNaN(bhikxAmount)) {
+            document.getElementById('bhikxOutput').value = bhikxAmount.toFixed(2);
+        } else {
+            document.getElementById('bhikxOutput').value = '';
+        }
+    }
 </script>
 
 </body>
