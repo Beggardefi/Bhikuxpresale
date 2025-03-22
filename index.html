@@ -5,52 +5,157 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buy BHIKX</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Styling */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #FF9800, #8E24AA);
+            color: white;
+            text-align: center;
+        }
+
+        header {
+            padding: 40px 20px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        h1 {
+            font-size: 3rem;
+            animation: slideIn 1s ease-in-out;
+        }
+
+        #countdown {
+            font-size: 2rem;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            display: inline-block;
+            animation: zoomIn 1.2s;
+        }
+
+        #presale-bar {
+            width: 80%;
+            height: 30px;
+            background: #ccc;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            animation: fadeIn 1s ease-in;
+        }
+
+        #progress {
+            width: 60%;
+            height: 100%;
+            background: #4CAF50;
+            color: white;
+            line-height: 30px;
+            transition: width 1s ease;
+        }
+
+        button {
+            background: #FF9800;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #E64A19;
+        }
+
+        footer {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-100px); }
+            to { transform: translateY(0); }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.5); }
+            to { transform: scale(1); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            #countdown {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
+
+<header>
     <h1>Buy BHIKX Tokens</h1>
-    <div id="countdown"></div>
-    <div id="presale-bar"></div>
-    <button id="connect-wallet">Connect Wallet</button>
-</body>
-</html>
+</header>
 
-<script>
-const countdown = document.getElementById('countdown');
-const targetDate = new Date('2025-12-31T00:00:00').getTime();
+<div id="countdown"></div>
 
-function updateTimer() {
-    const now = new Date().getTime();
-    const diff = targetDate - now;
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-    countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-}
-
-setInterval(updateTimer, 1000);
-</script>
-
-<div id="presale-bar" style="width: 100%; background: #ddd;">
-    <div id="progress" style="width: 50%; background: green; color: white; text-align: center;">50% Sold</div>
+<div id="presale-bar">
+    <div id="progress">60% Sold</div>
 </div>
 
-<script>
-const connectWallet = document.getElementById('connect-wallet');
+<button id="connect-wallet">Connect Wallet</button>
 
-connectWallet.onclick = async () => {
-    if (window.ethereum) {
-        try {
-            await window.ethereum.request({ method: 'eth_requestAccounts' });
-            alert('Wallet Connected!');
-        } catch (error) {
-            console.error(error);
-        }
-    } else {
-        alert('Please install MetaMask!');
+<footer>
+    <p>© 2025 BHIKX. All Rights Reserved.</p>
+</footer>
+
+<script>
+    // Countdown Timer
+    const countdown = document.getElementById('countdown');
+    const targetDate = new Date('2025-12-31T00:00:00').getTime();
+
+    function updateTimer() {
+        const now = new Date().getTime();
+        const diff = targetDate - now;
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
     }
-};
+
+    setInterval(updateTimer, 1000);
+
+    // Wallet Connection
+    const connectWallet = document.getElementById('connect-wallet');
+
+    connectWallet.onclick = async () => {
+        if (window.ethereum) {
+            try {
+                await window.ethereum.request({ method: 'eth_requestAccounts' });
+                alert('Wallet Connected!');
+            } catch (error) {
+                console.error(error);
+            }
+        } else {
+            alert('Please install MetaMask!');
+        }
+    };
 </script>
 
+</body>
+</html>
