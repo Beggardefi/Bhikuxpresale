@@ -4,101 +4,113 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buy BHIKX</title>
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Styling */
         body {
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #FF9800, #8E24AA);
+            background: linear-gradient(135deg, #1e1e2f, #3b5998);
             color: white;
             text-align: center;
         }
 
-        header {
-            padding: 40px 20px;
-            animation: fadeIn 1s ease-in;
+        header, footer {
+            padding: 20px;
+            background: #222;
         }
 
         h1 {
             font-size: 3rem;
-            animation: slideIn 1s ease-in-out;
+            margin-bottom: 10px;
         }
 
         #countdown {
-            font-size: 2rem;
-            margin: 20px 0;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 10px;
+            font-size: 1.5rem;
+            margin: 20px;
+            padding: 15px;
+            background: #333;
+            border-radius: 8px;
             display: inline-block;
-            animation: zoomIn 1.2s;
         }
 
-        #presale-bar {
-            width: 80%;
-            height: 30px;
-            background: #ccc;
-            border-radius: 15px;
-            overflow: hidden;
-            margin: 20px auto;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-            animation: fadeIn 1s ease-in;
+        .info {
+            margin: 20px 0;
         }
 
-        #progress {
-            width: 60%;
-            height: 100%;
-            background: #4CAF50;
-            color: white;
-            line-height: 30px;
-            transition: width 1s ease;
+        .card {
+            background: #2a2a40;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .buttons, .input-group {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
         }
 
         button {
-            background: #FF9800;
+            background: #4CAF50;
             color: white;
             border: none;
-            padding: 15px 30px;
-            font-size: 1.2rem;
+            padding: 12px 25px;
+            font-size: 1rem;
             cursor: pointer;
             transition: 0.3s;
         }
 
         button:hover {
-            background: #E64A19;
+            background: #45a049;
         }
 
-        footer {
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.7);
+        input {
+            width: 45%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .presale-bar {
+            width: 100%;
+            height: 30px;
+            background: #ccc;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px 0;
         }
 
-        @keyframes slideIn {
-            from { transform: translateY(-100px); }
-            to { transform: translateY(0); }
+        .progress {
+            width: 50%;
+            height: 100%;
+            background: #4CAF50;
+            color: white;
+            text-align: center;
+            line-height: 30px;
         }
 
-        @keyframes zoomIn {
-            from { transform: scale(0.5); }
-            to { transform: scale(1); }
+        a {
+            color: #00bfff;
+            text-decoration: none;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             h1 {
                 font-size: 2rem;
             }
-            #countdown {
-                font-size: 1.5rem;
+            input {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            .buttons {
+                flex-direction: column;
+            }
+            button {
+                margin-bottom: 10px;
             }
         }
     </style>
@@ -111,14 +123,34 @@
 
 <div id="countdown"></div>
 
-<div id="presale-bar">
-    <div id="progress">60% Sold</div>
+<div class="card">
+    <div class="info">
+        <p>USDT RAISED: <strong>$46,723.26 / $601,717</strong></p>
+        <p>YOUR PURCHASED BHIKX: <strong>0</strong></p>
+        <p>YOUR STAKEABLE BHIKX: <strong>0</strong></p>
+        <p>1 BHIKX = <strong>$0.00222</strong></p>
+    </div>
+
+    <div class="presale-bar">
+        <div class="progress" style="width: 60%;">60% Sold</div>
+    </div>
+
+    <div class="buttons">
+        <button id="connect-wallet">Connect Wallet</button>
+        <button>Buy with BNB</button>
+        <button>Buy with USDT</button>
+    </div>
+
+    <div class="input-group">
+        <input type="text" placeholder="Pay with ETH">
+        <input type="text" placeholder="Receive BHIKX">
+    </div>
+
+    <p><a href="#">Don't have a wallet?</a></p>
 </div>
 
-<button id="connect-wallet">Connect Wallet</button>
-
 <footer>
-    <p>© 2025 BHIKX. All Rights Reserved.</p>
+    <p>Powered by Web3Payments</p>
 </footer>
 
 <script>
