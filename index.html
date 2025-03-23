@@ -3,62 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buy BHIKX Token</title>
+    <title>BHIKX Presale</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
 </head>
 <body>
 
+<!-- Navigation -->
 <header>
-    <div class="container">
-        <img src="images/bhikx-logo.png" alt="BHIKX Logo" class="logo">
-        <h1>Buy BHIKX Token Presale</h1>
-        <p>Guaranteed Airdrop on Staking</p>
-    </div>
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#presale">Presale</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="https://twitter.com/Beggarindex" target="_blank">Twitter</a></li>
+            <li><a href="https://t.me/BeggarIndex" target="_blank">Telegram</a></li>
+            <li><a href="https://www.instagram.com/beggarindex" target="_blank">Instagram</a></li>
+        </ul>
+    </nav>
 </header>
 
-<section class="presale">
-    <div class="container">
-        <h2>Presale Ending In:</h2>
-        <div id="countdown"></div>
-        
-        <div class="purchase-box">
-            <label for="usdt">Enter USDT:</label>
-            <input type="number" id="usdt" placeholder="Enter USDT amount">
-            
-            <label for="bhikx">You Get BHIKX:</label>
-            <input type="text" id="bhikx" placeholder="BHIKX tokens" readonly>
+<!-- Hero Section -->
+<section id="hero">
+    <div class="hero-content">
+        <h1>BHIKX Token Presale</h1>
+        <p>Get in early and be part of the future of decentralized finance.</p>
+        <a href="#presale" class="btn">Join Presale</a>
+    </div>
+</section>
 
+<!-- About Section -->
+<section id="about">
+    <h2>About BHIKX</h2>
+    <p>BHIKX (BeggarIndex) is a decentralized token offering guaranteed **USDT airdrop** on staking, automated trading bots, and innovative DeFi solutions. Join the revolution today!</p>
+    <img src="images/bhikx-logo.png" alt="BHIKX Logo">
+</section>
+
+<!-- Presale Section -->
+<section id="presale">
+    <h2>Presale Information</h2>
+    <div class="presale-container">
+        <div id="countdown"></div>
+
+        <p>USDT Raised: <strong>$25,000 / $601,717</strong></p>
+        <p>1 BHIKX = <strong>$0.001</strong></p>
+
+        <label>Enter USDT:</label>
+        <input type="number" id="usdtInput" placeholder="Enter USDT" oninput="calculateBHIKX()">
+        
+        <label>You will receive:</label>
+        <input type="text" id="bhikxOutput" placeholder="BHIKX" readonly>
+
+        <div class="buttons">
+            <button onclick="connectWallet()">Connect Wallet</button>
             <button onclick="buyWithBNB()">Buy with BNB</button>
             <button onclick="buyWithUSDT()">Buy with USDT</button>
         </div>
-        
-        <p class="raised">USDT Raised: <span>$25,000</span></p>
-        <p class="progress">25% of Tokens Sold</p>
     </div>
 </section>
 
-<section class="about">
-    <div class="container">
-        <h2>About BHIKX</h2>
-        <p>BHIKX is a decentralized token with guaranteed USDT airdrop on staking. 
-           Join our presale and be part of the future of DeFi.</p>
-    </div>
+<!-- Contact Section -->
+<section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: support@bhikx.com</p>
 </section>
 
-<section class="socials">
-    <div class="container">
-        <h2>Follow Us</h2>
-        <a href="https://x.com/Beggarindex" target="_blank">Twitter</a>
-        <a href="https://t.me/BeggarIndex" target="_blank">Telegram</a>
-        <a href="https://www.instagram.com/beggarindex" target="_blank">Instagram</a>
-        <a href="https://discord.gg/f4GqXVcT" target="_blank">Discord</a>
-    </div>
-</section>
-
-<footer>
-    <p>&copy; 2025 BHIKX Token. All rights reserved.</p>
-</footer>
-
+<script src="script.js"></script>
 </body>
 </html>
