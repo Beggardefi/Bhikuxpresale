@@ -1,62 +1,135 @@
 /* General Styles */
-body {
-    font-family: Arial, sans-serif;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #fff;
     background: url('images/background.jpg') no-repeat center center/cover;
+    background-size: cover;
+    height: 100vh;
+}
+
+/* Navigation */
+nav {
+    background: #111;
+    padding: 15px;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav a {
+    color: #ffb300;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
     color: #fff;
 }
 
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/* Header */
-header {
+/* Hero Section */
+#hero {
     text-align: center;
-    padding: 40px 0;
-    background: #000;
-    color: #FFD700; /* Gold */
-    animation: fadeIn 1.5s;
+    padding: 100px 20px;
 }
 
-/* Countdown */
-#countdown {
-    font-size: 40px;
-    color: red;
+.hero-content h1 {
+    font-size: 50px;
+    color: #ffb300;
 }
 
-/* Buttons */
-button {
-    padding: 10px 25px;
-    background: #FFD700;
-    color: #000;
+.hero-content p {
+    font-size: 20px;
+    margin: 20px 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: #b71c1c;
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #ffb300;
+}
+
+/* About Section */
+#about, #presale, #contact {
+    padding: 60px 20px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+#about img {
+    width: 200px;
+    margin: 20px;
+}
+
+/* Presale Section */
+.presale-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #222;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #ffb300;
+}
+
+.presale-container input, .buttons button {
+    width: 100%;
+    padding: 12px;
+    margin: 15px 0;
+    font-size: 16px;
+}
+
+.presale-container button {
+    background: #b71c1c;
+    color: #fff;
     border: none;
     cursor: pointer;
     transition: 0.3s;
 }
 
-button:hover {
-    background: #FF0000;
-    color: #fff;
+.presale-container button:hover {
+    background: #ffb300;
 }
 
-/* Socials */
-.socials a {
-    color: #FFD700;
-    text-decoration: none;
-    margin: 10px;
-    transition: 0.3s;
+/* Countdown Timer */
+#countdown {
+    font-size: 24px;
+    color: #ffb300;
+    margin-bottom: 20px;
 }
 
-.socials a:hover {
-    color: #FF0000;
+/* Contact Section */
+#contact p {
+    font-size: 18px;
 }
 
-/* Animations */
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+/* Animation */
+@keyframes bg-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
