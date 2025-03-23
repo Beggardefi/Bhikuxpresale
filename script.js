@@ -1,42 +1,34 @@
-// Countdown Timer for this weekend
-function countdown() {
-    const targetDate = new Date();
-    targetDate.setDate(targetDate.getDate() + (6 - targetDate.getDay()));
-    targetDate.setHours(23, 59, 59);
+// Countdown Timer
+const countdownDate = new Date("2025-03-30T23:59:59").getTime();
 
+const x = setInterval(function () {
     const now = new Date().getTime();
-    const distance = targetDate - now;
-
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    const distance = countdownDate - now;
 
     if (distance < 0) {
-        document.getElementById("countdown").innerHTML = "Presale ended!";
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "Presale Ended!";
+    } else {
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
     }
-}
+}, 1000);
 
-setInterval(countdown, 1000);
+// USDT to BHIKX Auto Calculation
+document.getElementById("usdt").addEventListener("input", function () {
+    const usdtAmount = parseFloat(this.value);
+    const bhikxAmount = usdtAmount / 0.001;  
+    document.getElementById("bhikx").value = bhikxAmount.toFixed(0);
+});
 
-// Automatic BHIKX Calculation
-function calculateBHIKX() {
-    const usdt = parseFloat(document.getElementById('usdtInput').value) || 0;
-    const bhikx = usdt / 0.001;  
-    document.getElementById('bhikxOutput').value = bhikx.toFixed(0);
-}
-
-// Wallet Connect Simulation
-function connectWallet() {
-    alert("Wallet connection simulated.");
-}
-
+// Dummy Buy Functions
 function buyWithBNB() {
-    alert("Buy with BNB clicked.");
+    alert("BNB Payment Initiated!");
 }
 
 function buyWithUSDT() {
-    alert("Buy with USDT clicked.");
+    alert("USDT Payment Initiated!");
 }
